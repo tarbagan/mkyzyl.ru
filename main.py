@@ -40,7 +40,7 @@ def parser_page(url):
     soup = bs(response, 'html.parser')
     tag = (soup.findAll('p', attrs={'class': 'news-item'}))
 
-    with open( 'news.txt', 'a', encoding='utf8') as file:
+    with open( 'news.txt', 'a', encoding='utf8') as file: #файл с результатом
         for i in tag:
             url_full = "http://www.mkyzyl.ru" + (i.find("a").get('href'))
             response_page = requests.get(url_full, headers=headers).text
@@ -60,7 +60,7 @@ def parser_page(url):
                     for img in image_page:
                         image = ("http://www.mkyzyl.ru" + img['src'])
                         try:
-                            download = (wget.download(image, out="d:/mykyzyl/image" ))
+                            download = (wget.download(image, out="d:/mykyzyl/image" )) #качаем картинки с сайта
                         except:
                             download = ''
                 news = {'title':title, 'content': content, 'image': image, 'download_img':download}
