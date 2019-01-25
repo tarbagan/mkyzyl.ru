@@ -8,7 +8,7 @@ import pymysql.cursors
 
 def link():
     url = []
-    for i in range(1,421):
+    for i in range(1,421): #количество страниц пагинации
         url.append("http://www.mkyzyl.ru/?PAGEN_1=%s" %i)
     return url
 
